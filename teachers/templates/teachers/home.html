@@ -1,0 +1,20 @@
+{% extends 'teachers/base.html' %}
+
+{% block content %}
+<div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">Система управления преподавателями</h1>
+    <p class="text-xl text-gray-600">Поиск и управление преподавателями и дисциплинами</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <a href="{% url 'teacher_list' %}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-3">Преподаватели</h2>
+        <p class="text-gray-600">Просмотр списка преподавателей и поиск по имени или дисциплинам</p>
+    </a>
+    
+    <a href="{% url 'discipline_list' %}" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-3">Дисциплины</h2>
+        <p class="text-gray-600">Просмотр списка дисциплин и поиск по названию</p>
+    </a>
+</div>
+{% endblock %}

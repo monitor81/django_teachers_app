@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Преподаватели и дисциплины{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-gray-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="{% url 'home' %}" class="text-xl font-bold">МГТУ им. Г.И. Носова</a>
+                <div class="space-x-4">
+                    <a href="{% url 'home' %}" class="hover:text-gray-300">Главная</a>
+                    <a href="{% url 'teacher_list' %}" class="hover:text-gray-300">Преподаватели</a>
+                    <a href="{% url 'discipline_list' %}" class="hover:text-gray-300">Дисциплины</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; 2025 МГТУ им. Г.И. Носова</p>
+        </div>
+    </footer>
+</body>
+</html>

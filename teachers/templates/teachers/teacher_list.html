@@ -1,0 +1,58 @@
+{% extends 'teachers/base.html' %}
+
+{% block title %}Преподаватели{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Список преподавателей</h1>
+    
+    <form method="get" class="mb-6">
+        <div class="flex gap-2">
+            <input type="text" 
+                   name="q" 
+                   value="{{ query }}" 
+                   placeholder="Поиск преподавателей или дисциплин..."
+                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
+            <button type="submit" 
+                    class="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors">
+                Найти
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for teacher in teachers %}
+    <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ teacher.get_full_name }}</h3>
+        
+        {% if teacher.email %}
+        <p class="text-gray-600 mb-1">
+            <span class="font-medium">Email:</span> {{ teacher.email }}
+        </p>
+        {% endif %}
+        
+        {% if teacher.phone %}
+        <p class="text-gray-600 mb-3">
+            <span class="font-medium">Телефон:</span> {{ teacher.phone }}
+        </p>
+        {% endif %}
+        
+        <div class="mt-4">
+            <h4 class="font-medium text-gray-700 mb-2">Дисциплины:</h4>
+            <div class="flex flex-wrap gap-2">
+                {% for discipline in teacher.disciplines.all %}
+                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                    {{ discipline.name }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-span-full text-center py-8">
+        <p class="text-gray-600 text-lg">Преподаватели не найдены</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
